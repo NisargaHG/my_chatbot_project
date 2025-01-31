@@ -11,3 +11,5 @@ tweepy==4.15.0
 tzdata==2025.1
 urllib3==2.3.0
 gunicorn==23.0.0
+daphne==4.0.0
+
