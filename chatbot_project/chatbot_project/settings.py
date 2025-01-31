@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-8*5k@ie6t)%er-#34vj5$xggil6fqcr__qwdkl0_4swqt7t!16
 DEBUG = True
 
 ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nisarga chatbotproject.netlify.app', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
