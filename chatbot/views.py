@@ -16,7 +16,7 @@ import tweepy
 from django.shortcuts import render
 
 def chatbot_ui(request):
-    query = request.GET.get('q', '')  # get the query from URL param
+    query = request.GET.get('q', '')  
     tweets = []
 
     if query:
@@ -25,7 +25,7 @@ def chatbot_ui(request):
 
         client = tweepy.Client(bearer_token=bearer_token)
 
-        # Search recent tweets
+       
         response = client.search_recent_tweets(query=query, max_results=10)
 
         tweets = [tweet.text for tweet in response.data] if response.data else []
