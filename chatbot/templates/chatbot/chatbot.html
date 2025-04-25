@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <script>
+        function askChatbot() {
+            var query = document.getElementById("query").value;
+    
+            fetch(`/chatbot/api/?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log("DEBUG:", data);  
+    
+                let resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = "";
+    
+                if (data.tweets && data.tweets.length > 0) {
+                    data.tweets.forEach(tweet => {
+                        resultDiv.innerHTML += `<p>${tweet.text}</p><hr>`;
+                    });
+                } else {
+                    resultDiv.innerHTML = "<p>No tweets found.</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("result").innerHTML = "<p>Something went wrong!</p>";
+            });
+        }
+    </script>
+    
+
+</body>
+</html>
